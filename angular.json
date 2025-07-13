@@ -10,11 +10,14 @@
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
-        "build": {
+        "build": { 
           "builder": "@angular/build:application",
           "options": {
+            "outputPath": "dist/login",
+            "index": "src/index.html",
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
+            "baseHref": "/vibras/",
             "assets": [
               {
                 "glob": "**/*",
