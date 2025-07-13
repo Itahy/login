@@ -1,0 +1,18 @@
+.modal-logo-container {
+  padding-top: 24px; /* Añade espacio arriba */
+}
+
+.logo-modal-imagen {
+  width: 100%;
+  max-width: 500px;
+  display: block;
+  margin: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Estiliza la sección de acciones para que el botón se vea mejor */
+[mat-dialog-actions] {
+  padding: 16px 24px;
+  margin-top: 8px;
+}

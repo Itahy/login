@@ -1,0 +1,288 @@
+/* --- Estilos Generales --- */
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f9f4f7; /* Un fondo gris claro y profesional */
+  font-family: 'Roboto', "Helvetica Neue", sans-serif;
+}
+
+/* --- Header y Barra de Navegación --- */
+.header {
+  background: #edacac; /* Fondo blanco para un look limpio y corporativo */
+  color: #333; /* Texto oscuro para un buen contraste */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); /* Sombra sutil */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0 24px;
+}
+
+.logo-button {
+  padding: 0; /* Elimina el padding extra del botón */
+  margin-right: 16px;
+}
+
+.logo-tienda-grande {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.logo-tienda-grande:hover {
+  transform: scale(1.1) rotate(10deg);
+}
+
+/* Estilo para los botones del menú en el header */
+.header button[mat-button] {
+  font-weight: 500;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 4px;
+  padding: 0 16px;
+  border-radius: 6px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+
+
+.header button[mat-button]:hover,
+.header button[mat-button].mat-menu-trigger-active {
+  color: #ff4d4d; /* Color de acento que ya usabas */
+  background-color: rgba(255, 77, 77, 0.07);
+}
+
+.spacer {
+  flex: 1 1 auto; /* Empuja los elementos a los extremos */
+}
+
+.perfil {  
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px; /* Aumentado para mejor visibilidad */
+  font-style: black;
+  font-family: 'Roboto', "Helvetica Neue", sans-serif;
+  font-weight: 500;
+}
+
+.perfil-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover; /* Asegura que la imagen llene el círculo sin estirarse */
+}
+
+
+/* === Banner === */
+.banner-container {
+  width: 100%;
+  max-height: 400px; /* Aumentado para dar más espacio vertical a la imagen */
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  margin-bottom: 2px; /* Mayor separación con el contenido inferior */
+}
+
+.banner-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center 35%; /* Ajusta el enfoque vertical de la imagen */
+  display: block;
+  border-radius: 0;
+}
+
+
+/* --- Contenedor de Productos --- */
+.productos-container {
+  display: grid;
+  /* Crea una cuadrícula responsiva que se ajusta al tamaño de la pantalla */
+  grid-template-columns: repeat(3, 1fr); /* ← Cambiado para 4 columnas fijas */
+  gap: 20px; /* Espacio entre las tarjetas */
+  padding: 32px;
+  max-width: 1900px;
+  width: 100%;
+  margin: 0 auto;
+  min-height: 0;
+
+}
+
+/* --- Tarjeta de Producto --- */
+.producto-card {
+  border-radius: 12px;
+  overflow: hidden; /* Asegura que la imagen respete el borde redondeado */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+}
+
+.producto-card:hover {
+  transform: translateY(-8px); /* Efecto de elevación al pasar el cursor */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.producto-card img[mat-card-image] {
+  height: 220px;
+  object-fit: cover; /* La imagen cubre el área sin distorsionarse */
+}
+
+.producto-card mat-card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 16px;
+  padding: 0 16px;
+}
+
+.producto-card mat-card-content {
+  padding: 16px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.producto-card mat-card-content p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+
+.producto-card mat-card-content strong {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ff4d4d; /* Mismo color de acento para consistencia */
+  align-self: flex-end; /* Alinea el precio a la derecha */
+}
+
+/* --- Footer --- */
+.footer {
+  background-color: #edacac; /* Un gris oscuro y elegante */
+  color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  padding: 24px;
+  margin-top: auto; /* Se asegura que esté siempre al final */
+}
+
+.footer p {
+  margin: 0;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+
+/* --- Filtro de Productos --- */
+.filtro {
+  display: flex;
+  justify-content: flex-end; /* Cambia a center o flex-start si prefieres */
+  margin-bottom: 16px;
+}
+
+.filtro .mat-form-field {
+  width: 100%;
+  max-width: 400px;
+  background-color: #fff0f0;
+  border-radius: 12px;
+  padding: 8px 16px;
+  box-shadow: 0 4px 12px rgba(255, 77, 77, 0.15);
+  transition: box-shadow 0.3s ease;
+}
+
+.filtro .mat-form-field:hover {
+  box-shadow: 0 6px 18px rgba(255, 77, 77, 0.25);
+}
+
+/* --- Botones de Producto --- */
+.botones-producto {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+/* --- Tabla de Productos --- */
+.tabla-productos-container {
+  margin-top: 2px;      
+  margin-bottom: 48px;  
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 95%;
+  overflow-x: auto;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 16px;        
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+}
+
+
+/* TABLA GENERAL */
+.tabla-estilizada {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 20px;
+  font-size: 22px;
+  text-align: center;
+  color: #444;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* ENCABEZADOS */
+th.mat-header-cell {
+  background-color: #ffcdd2;
+  color: #222;
+  font-weight: 900;       
+  font-size: 200px;        
+  padding: 20px;
+  border-bottom: 3px solid #f8a8a8;
+  text-align: center;     
+  vertical-align: middle; 
+  text-transform: uppercase;
+  letter-spacing: 1.5px;  
+}
+
+/* CELDAS */
+td.mat-cell {
+  background-color: #fff0f0;
+  padding: 24px 16px;
+  border-radius: 16px;
+  font-size: 20px;
+  font-weight: 500;
+  border-bottom: 2px solid #f1f1f1;
+  transition: transform 0.2s ease;
+  text-align: center;
+}
+
+td.mat-cell:hover {
+  transform: scale(1.015);
+}
+
+/* IMAGEN */
+.imagen-producto {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* BOTONES DE ACCION */
+td.mat-cell button {
+  font-size: 18px;
+  padding: 12px 24px;
+  margin: 0 6px;
+  border-radius: 8px;
+}
+
+td.mat-cell button mat-icon {
+  font-size: 24px;
+  margin-right: 6px;
+}
+
+td.mat-cell button:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease;
+}

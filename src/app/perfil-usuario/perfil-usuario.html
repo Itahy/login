@@ -1,0 +1,44 @@
+<!-- Header -->
+<mat-toolbar color="primary" class="header">
+  <span>VIBRAS ... PERFIL DE USUARIO</span>
+</mat-toolbar>
+
+<!-- Contenido del perfil -->
+<main class="contenido">
+  <mat-card>
+    <h2>Perfil del Usuario</h2>
+
+    <form [formGroup]="usuarioForm" (ngSubmit)="guardarCambios()">
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Apellido</mat-label>
+        <input matInput formControlName="apellido" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Teléfono</mat-label>
+        <input matInput formControlName="telefono" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="campo">
+        <mat-label>Nombre de usuario</mat-label>
+        <input matInput formControlName="usuario" />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">Guardar Cambios</button>
+    </form>
+  </mat-card>
+</main>
+<!-- Footer -->
+<mat-toolbar color="primary" class="footer">
+  <span class="footer-text">© BIANI BISALUA VARELA VERA & RAMOS JIMENEZ XOCHITL ITAHY</span>
+</mat-toolbar>
