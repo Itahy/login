@@ -1,0 +1,17 @@
+.contenido-modal {
+  max-height: 65vh;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.campo {
+  display: block;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.acciones {
+  padding: 16px;
+  border-top: 1px solid #ddd;
+  background-color: #fafafa;
+}

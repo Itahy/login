@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Información del Producto</h1>
+
+<div mat-dialog-content class="contenido-modal">
+  <img
+    [src]="producto.thumbnail"
+    alt="Producto"
+    class="imagen-producto"
+  />
+
+  <div class="info-producto">
+    <h3>{{ producto.title }}</h3>
+    <p><strong>Descripción:</strong> {{ producto.description }}</p>
+    <p><strong>Precio:</strong> ${{ producto.price }}</p>
+
+    <h4>Información Adicional</h4>
+    <ul>
+      <li><strong>Categoría:</strong> {{ producto.category || 'N/A' }}</li>
+      <li><strong>Stock:</strong> {{ producto.stock || 'N/A' }}</li>
+      <li><strong>Marca:</strong> {{ producto.brand || 'N/A' }}</li>
+      <li><strong>Descuento:</strong> {{ producto.discountPercentage || '0' }}%</li>
+    </ul>
+  </div>
+</div>
+
+<div mat-dialog-actions class="acciones" align="end">
+  <button mat-button (click)="cerrar()">Cerrar</button>
+</div>

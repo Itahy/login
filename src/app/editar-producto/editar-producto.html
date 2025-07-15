@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>Editar Producto</h2>
+
+<mat-dialog-content>
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Título</mat-label>
+    <input matInput [(ngModel)]="productoEditado.title">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Descripción</mat-label>
+    <textarea matInput rows="3" [(ngModel)]="productoEditado.description"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Precio</mat-label>
+    <input matInput type="number" [(ngModel)]="productoEditado.price">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Marca</mat-label>
+    <input matInput [(ngModel)]="productoEditado.brand">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Categoría</mat-label>
+    <input matInput [(ngModel)]="productoEditado.category">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Rating</mat-label>
+    <input matInput type="number" step="0.1" [(ngModel)]="productoEditado.rating">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Stock</mat-label>
+    <input matInput type="number" [(ngModel)]="productoEditado.stock">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>URL de imagen</mat-label>
+    <input matInput [(ngModel)]="productoEditado.thumbnail">
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="acciones">
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="guardar()">Guardar</button>
+</mat-dialog-actions>

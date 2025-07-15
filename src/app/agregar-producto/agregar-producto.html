@@ -1,0 +1,50 @@
+<h2 mat-dialog-title>Agregar Producto</h2>
+
+<mat-dialog-content class="contenido-modal">
+  <form #form="ngForm">
+    <mat-form-field appearance="outline" class="campo">
+      <mat-label>URL de Imagen</mat-label>
+      <input matInput [(ngModel)]="producto.thumbnail" name="thumbnail" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="campo">
+      <mat-label>Título</mat-label>
+      <input matInput [(ngModel)]="producto.title" name="title" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="campo">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput [(ngModel)]="producto.description" name="description" required></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="campo">
+      <mat-label>Precio</mat-label>
+      <input matInput type="number" [(ngModel)]="producto.price" name="price" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="campo">
+      <mat-label>Categoría</mat-label>
+      <input matInput [(ngModel)]="producto.category" name="category" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="campo">
+      <mat-label>Stock</mat-label>
+      <input matInput type="number" [(ngModel)]="producto.stock" name="stock" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="campo">
+      <mat-label>Marca</mat-label>
+      <input matInput [(ngModel)]="producto.brand" name="brand" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="campo">
+      <mat-label>% Descuento</mat-label>
+      <input matInput type="number" [(ngModel)]="producto.discountPercentage" name="discount" />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="acciones">
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="guardarProducto()">Guardar</button>
+</mat-dialog-actions>

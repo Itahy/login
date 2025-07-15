@@ -1,0 +1,11 @@
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.acciones {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}

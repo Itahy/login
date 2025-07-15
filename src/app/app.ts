@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
+//import { ApplicationConfig } from '@angular/core';
+//import { provideHttpClient, withFetch } from '@angular/common/http';  
 
 @Component({
   selector: 'app-root',
@@ -14,4 +16,5 @@ export class App {
 }
 export class AppModule { 
 }
+
 
