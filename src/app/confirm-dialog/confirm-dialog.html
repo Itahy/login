@@ -1,0 +1,19 @@
+<div class="dialog-container">
+      <!--<mat-icon class="icon-warning">warning</mat-icon> -->
+      <h2 class="dialog-title">¿Eliminar producto?</h2>
+
+      <mat-dialog-content class="dialog-content">
+        ¿Estás seguro de que deseas eliminar <strong>"{{ data.title }}"</strong>? 
+      </mat-dialog-content>
+      
+      <!--<mat-dialog-actions align="end" class="acciones">
+        <button mat-button class="btn-cancelar" (click)="onCancel()">Cancelar</button>
+        <button mat-raised-button color="warn" class="btn-eliminar" (click)="onConfirm()">Eliminar</button>
+    </mat-dialog-actions> -->
+    
+    <mat-dialog-actions align="end" class="acciones">
+        <button mat-button (click)="cancelar()">Cancelar</button>
+        <button mat-raised-button color="primary" (click)="confirmar()">Eliminar</button>
+    </mat-dialog-actions>
+
+

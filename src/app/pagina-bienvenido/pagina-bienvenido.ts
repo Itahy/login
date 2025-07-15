@@ -13,6 +13,12 @@ import { Router, RouterModule } from '@angular/router';
 import { MatInputModule } from "@angular/material/input";
 import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
+import { AgregarProducto } from '../agregar-producto/agregar-producto';
+import { MensajesProductos } from '../mensajes-productos/mensajes-productos';
+import { ConfirmDialog } from '../confirm-dialog/confirm-dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { EditarProducto } from '../editar-producto/editar-producto';
+
 
 
 @Component({
@@ -37,12 +43,13 @@ import { MatTableModule } from '@angular/material/table';
 })
 export class PaginaBienvenido implements OnInit {
 
-  constructor(private router: Router) {}
+  constructor(private dialog: MatDialog, private snackBar: MatSnackBar, private router: Router) {}
+
 
   private http = inject(HttpClient);
-  public dialog = inject(MatDialog);
   public mensajeBienvenida: string = '';
   public nombreUsuario: string | null = null;
+  public avatarUsuario: string | null = null;
 
   productos: any[] = [];
 
@@ -51,7 +58,8 @@ export class PaginaBienvenido implements OnInit {
 
   if (usuarioStr) {
     const usuario = JSON.parse(usuarioStr);
-    this.nombreUsuario = usuario.name?.firstname || 'Invitado';
+    this.nombreUsuario = usuario.name|| 'Invitado';
+    this.avatarUsuario = usuario.image || null;
   }
 
   this.http.get<any>('https://dummyjson.com/products').subscribe({
@@ -85,8 +93,7 @@ export class PaginaBienvenido implements OnInit {
   filtro: string = '';
   columnasTabla: string[] = ['imagen', 'titulo', 'descripcion', 'precio', 'acciones'];
 
-
-productosFiltrados() {
+get productosFiltrados() {
   if (!this.filtro) return this.productos;
   const filtroLower = this.filtro.toLowerCase();
   return this.productos.filter(producto =>
@@ -95,18 +102,64 @@ productosFiltrados() {
   );
 }
 
+
 editarProducto(producto: any) {
-  alert(`Simulando edición del producto: ${producto.title}`);
-  console.log('Editar producto:', producto);
+  const dialogRef = this.dialog.open(EditarProducto, {
+    width: '500px',
+    data: producto
+  });
+
+  dialogRef.afterClosed().subscribe(resultado => {
+    if (resultado) {
+      const index = this.productos.findIndex(p => p.id === producto.id);
+      if (index !== -1) {
+        this.productos = [
+          ...this.productos.slice(0, index),
+          resultado,
+          ...this.productos.slice(index + 1)
+        ];
+      }
+    }
+  });
 }
+
+
 
 eliminarProducto(producto: any) {
-  const confirmacion = confirm(`¿Estás seguro de que quieres eliminar "${producto.title}"?`);
-  if (confirmacion) {
-    // Simulación: quitarlo del arreglo local
-    this.productos = this.productos.filter(p => p.id !== producto.id);
-    alert(`Producto "${producto.title}" eliminado (simulado).`);
-  }
+  const dialogRef = this.dialog.open(ConfirmDialog, {
+    data: { title: producto.title }
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      this.productos = this.productos.filter(p => p.id !== producto.id);
+      this.snackBar.open(`Producto "${producto.title}" eliminado`, 'Cerrar', {
+        duration: 3000,
+      });
+    }
+  });
 }
 
+
+abrirModalAgregarProducto() {
+  const dialogRef = this.dialog.open(AgregarProducto, {
+    width: '500px',
+  });
+
+  dialogRef.afterClosed().subscribe(nuevoProducto => {
+    if (nuevoProducto) {
+      console.log('Producto agregado:', nuevoProducto); // Para verificar en consola
+      this.productos = [nuevoProducto, ...this.productos]; 
+      this.filtro = ''; 
+    }
+  });
+}
+
+
+verMasInfo(producto: any) {
+  this.dialog.open(MensajesProductos, {
+    width: '500px',
+    data: producto
+  });
+}
 }

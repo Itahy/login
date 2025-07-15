@@ -6,7 +6,11 @@
 <!-- Contenido del perfil -->
 <main class="contenido">
   <mat-card>
-    <h2>Perfil del Usuario</h2>
+    <div class="perfil-usuario">
+      <img [src]="imagenPerfil" alt="Foto de perfil" class="imagen-perfil" />
+      <h2>{{ nombreUsuario }}</h2>
+      <p>{{ correoUsuario }}</p>
+    </div>
 
     <form [formGroup]="usuarioForm" (ngSubmit)="guardarCambios()">
       <mat-form-field appearance="outline" class="campo">
@@ -15,29 +19,36 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="campo">
-        <mat-label>Apellido</mat-label>
-        <input matInput formControlName="apellido" />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline" class="campo">
         <mat-label>Email</mat-label>
         <input matInput formControlName="email" />
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="campo">
-        <mat-label>Teléfono</mat-label>
-        <input matInput formControlName="telefono" />
+        <mat-label>Contraseña</mat-label>
+        <input
+          matInput
+          [type]="mostrarPassword ? 'text' : 'password'"
+          formControlName="password"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          type="button"
+          (click)="toggleMostrarPassword()"
+          [attr.aria-label]="'Mostrar u ocultar contraseña'"
+          [attr.aria-pressed]="mostrarPassword"
+        >
+          <mat-icon>{{ mostrarPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="campo">
-        <mat-label>Nombre de usuario</mat-label>
-        <input matInput formControlName="usuario" />
-      </mat-form-field>
+
 
       <button mat-raised-button color="primary" type="submit">Guardar Cambios</button>
     </form>
   </mat-card>
 </main>
+
 <!-- Footer -->
 <mat-toolbar color="primary" class="footer">
   <span class="footer-text">© BIANI BISALUA VARELA VERA & RAMOS JIMENEZ XOCHITL ITAHY</span>

@@ -69,37 +69,41 @@ export class IniciarSesion {
   }
 
   onSubmit() {
-    this.limpiarErrores();
-    if (this.loginForm.invalid) {
-      this.loginForm.markAllAsTouched();
-      this.mostrarAlerta('Todos los campos son obligatorios y válidos', 'error');
-      return;
-    }
+  this.limpiarErrores();
 
-    const { email, password } = this.loginForm.getRawValue();
-
-    this.http.get<any[]>('https://fakestoreapi.com/users').subscribe({
-      next: (usuarios) => {
-        const primerosTres = usuarios.slice(0, 3);
-        const usuario = primerosTres.find(u => u.email === email);
-        if (!usuario) {
-          this.mostrarErrorTemporal('correo', 'El correo es incorrecto');
-          return;
-        }
-        if (usuario.password !== password) {
-          this.mostrarErrorTemporal('password', 'La contraseña es incorrecta');
-          return;
-        }
-        localStorage.setItem('usuarioLogueado', JSON.stringify(usuario)); // o 'username' si viene con otro campo
-        this.mostrarAlerta('¡Inicio de sesión exitoso!', 'exito');
-        
-        setTimeout(() => {
-          this.router.navigate(['/pagina-bienvenido']);
-        }, 1200);
-      },
-      error: () => {
-        this.mostrarAlerta('Error al conectar con el servidor', 'error');
-      }
-    });
+  if (this.loginForm.invalid) {
+    this.loginForm.markAllAsTouched();
+    this.mostrarAlerta('Todos los campos son obligatorios y válidos', 'error');
+    return;
   }
+
+  const { email, password } = this.loginForm.getRawValue();
+
+  this.http.get<any[]>('https://68743fcedd06792b9c937143.mockapi.io/api/users').subscribe({
+    next: (usuarios) => {
+      const usuario = usuarios.find(u => u.email === email);
+
+      if (!usuario) {
+        this.mostrarErrorTemporal('correo', 'El correo es incorrecto');
+        return;
+      }
+
+      if (usuario.password !== password) {
+        this.mostrarErrorTemporal('password', 'La contraseña es incorrecta');
+        return;
+      }
+
+      localStorage.setItem('usuarioLogueado', JSON.stringify(usuario));
+      this.mostrarAlerta('¡Inicio de sesión exitoso!', 'exito');
+
+      setTimeout(() => {
+        this.router.navigate(['/pagina-bienvenido']);
+      }, 1200);
+    },
+    error: () => {
+      this.mostrarAlerta('Error al conectar con el servidor', 'error');
+    }
+  });
+}
+
 }
